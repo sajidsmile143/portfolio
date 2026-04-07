@@ -11,7 +11,7 @@ export default function Portfolio() {
 
   const projects = [
     {
-      title: "Ejuno – Wedding Planning Platform",
+      title: "eJuno – Wedding Planning Platform",
       description:
         "Multi-portal wedding services marketplace — vendors, couples, and admin portals with real-time bookings and financial reporting.",
       image: "/ejuno.jpeg",
@@ -19,7 +19,7 @@ export default function Portfolio() {
       live: "https://ejuno.io",
     },
     {
-      title: "Insynqiq – Enterprise SaaS Platform",
+      title: "InSynQIQ – Enterprise SaaS Platform",
       description:
         "Production-grade SaaS with enterprise PostgreSQL architecture, SSR via Next.js, full auth system with refresh tokens and role permissions.",
       image: "/insynqiq.png",
@@ -62,6 +62,64 @@ export default function Portfolio() {
       tags: ["React.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
       github: "https://github.com/sajidsmile143",
       live: "https://invoicing-front.web.app/",
+    },
+    {
+      title: "Woooo.World",
+      description:
+        "A global connectivity platform aimed at bringing people and ideas together from around the world through a responsive and engaging interface.",
+      image: "/woo.jpeg",
+      tags: ["React.Js", "Tailwind CSS", "Bootstrap", "HTML"],
+      live: "http://woooo.world/",
+    },
+    {
+      title: "FileLink",
+      description:
+        "A sleek and privacy-focused file-sharing platform inspired by WeTransfer. Enables instant file uploads and sharing with no sign-up required.",
+      image: "/fileLink.png",
+      tags: ["React", "Next.js", "Tailwind CSS", "Supabase", "TypeScript", "AI"],
+      github: "https://github.com/sajidsmile143/fileLink",
+      live: "https://www.filelink.icu/",
+    },
+    {
+      title: "Modern Portfolio",
+      description:
+        "A stylish and interactive developer portfolio showcasing projects, animations, and technical skills with a modern touch.",
+      image: "/portfolio.jpeg",
+      tags: ["React", "Tailwind CSS", "Motion", "TypeScript", "GSAP"],
+      github: "https://github.com/sajidsmile143?tab=repositories",
+      live: "https://sajidbhatti-portfolio.vercel.app/",
+    },
+    {
+      title: "Budget Tracker",
+      description: "A lightweight and intuitive JavaScript-based application to help users track income and expenses effectively.",
+      image: "/budget.jpeg",
+      tags: ["HTML", "CSS", "JavaScript"],
+      github: "https://github.com/sajidsmile143?tab=repositories",
+      live: "https://budget-tracker-sigma-sandy.vercel.app/",
+    },
+    {
+      title: "ElectraLith",
+      description: "A futuristic web platform for lithium production. Built for scalability and performance to support industrial innovation.",
+      image: "/electraLith.jpeg",
+      tags: ["React", "Tailwind CSS", "Node.js", "JavaScript"],
+      github: "https://github.com/sajidsmile143?tab=repositories",
+      live: "https://www.electralith.com/",
+    },
+    {
+      title: "Weather App",
+      description: "A real-time weather application providing accurate forecasts and global weather updates with animated UI elements.",
+      image: "/weather.jpeg",
+      tags: ["React", "GSAP", "Tailwind CSS", "API Integration"],
+      github: "https://github.com/sajidsmile143/Weather-app",
+      live: "https://weather-app-six-psi-95.vercel.app/",
+    },
+    {
+      title: "Landing Page – Property Panorama",
+      description: "A modern and dynamic landing page for a real estate platform, featuring smooth animations and responsive design.",
+      image: "/property.jpeg",
+      tags: ["React", "GSAP", "Tailwind CSS", "API Integration"],
+      github: "https://github.com/sajidsmile143/Weather-app",
+      live: "https://landingpage-propertypanorama.vercel.app/",
     },
   ];
 
