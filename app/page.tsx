@@ -21,7 +21,7 @@ export default function Portfolio() {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch("https://formspree.io/f/mqaeavne", {
+      const response = await fetch("https://formspree.io/f/mpqoeaaq", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
