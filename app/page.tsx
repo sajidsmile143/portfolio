@@ -3,11 +3,44 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Linkedin, Github, Mail, Phone, ExternalLink } from "lucide-react"; // Added ExternalLink
 import { motion, useScroll, useTransform } from "framer-motion";
+import { toast } from "sonner";
+import { useState } from "react";
 
 export default function Portfolio() {
   const { scrollYProgress } = useScroll();
   const ellipseScale = useTransform(scrollYProgress, [0, 1], [0.5, 1.5]);
   const ellipseOpacity = useTransform(scrollYProgress, [0, 1], [0.3, 0.7]);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("https://formspree.io/f/mqaeavne", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        toast.success("Message sent! I'll get back to you soon. 😊");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        toast.error("Oops! There was a problem sending your message.");
+      }
+    } catch (error) {
+      toast.error("Oops! Something went wrong.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const projects = [
     {
@@ -448,31 +481,46 @@ export default function Portfolio() {
           </div>
           <div className="max-w-2xl mx-auto">
             <div className="bg-gray-700 p-8 rounded-lg shadow-lg">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">Name</label>
                     <input
+                      name="name"
                       type="text"
-                      className="w-full px-4 py-2 bg-gray-600 border border-gray-500 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white"
+                      required
+                      placeholder="Your Name"
+                      className="w-full px-4 py-2 bg-gray-600 border border-gray-500 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-gray-400"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
                     <input
+                      name="email"
                       type="email"
-                      className="w-full px-4 py-2 bg-gray-600 border border-gray-500 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white"
+                      required
+                      placeholder="your@email.com"
+                      className="w-full px-4 py-2 bg-gray-600 border border-gray-500 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-gray-400"
                     />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">Message</label>
                   <textarea
+                    name="message"
+                    required
+                    placeholder="Tell me about your project..."
                     rows={5}
-                    className="w-full px-4 py-2 bg-gray-600 border border-gray-500 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white"
+                    className="w-full px-4 py-2 bg-gray-600 border border-gray-500 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-gray-400"
                   ></textarea>
                 </div>
-                <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3">Let's Collaborate</Button>
+                <Button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 disabled:opacity-50 transition-all font-semibold text-lg"
+                >
+                  {isSubmitting ? "Sending..." : "Let's Collaborate"}
+                </Button>
               </form>
             </div>
           </div>

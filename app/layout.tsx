@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   generator: 'v0.dev',
 }
 
+import { Toaster } from 'sonner'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -14,7 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        {children}
+        <Toaster position="top-center" richColors />
+      </body>
     </html>
   )
 }
